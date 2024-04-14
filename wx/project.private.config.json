@@ -5,5 +5,18 @@
     "compileHotReLoad": true,
     "lazyloadPlaceholderEnable": false
   },
-  "libVersion": "development"
+  "libVersion": "development",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/learncss/learncss",
+          "pathName": "pages/learncss/learncss",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
