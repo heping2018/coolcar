@@ -15,12 +15,35 @@ Component({
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
   },
   methods: {
+    updataMotoData(){  
+      let count = 0
+      let shouldStop = false
+      setTimeout(() => {
+        shouldStop = true
+      }, 10000);
+     const update = ()=> {
+      count ++
+      if(!shouldStop){
+      this.setData({
+        motto: "updateMoto data:" + count,
+        },
+        () => {
+          update()
+        }
+      )}
+    }
+    update()
+  },
     // 事件处理函数
     bindViewTap() {
       // 一层一层的栈
       wx.navigateTo({
         url: '../logs/logs',
       })
+    },
+    onLoad() {
+      console.log("123")
+      this.updataMotoData()
     },
     onChooseAvatar(e: any) {
       const { avatarUrl } = e.detail
