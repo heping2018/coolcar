@@ -1,4 +1,6 @@
 // index.ts
+
+
 // 获取应用实例
 const app = getApp<IAppOption>()
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
@@ -15,6 +17,15 @@ Component({
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
   },
   methods: {
+    getUserInfo(e: any){
+      console.log(e)
+      const userInfo: WechatMiniprogram.UserInfo = e.detail.userInfo
+      app.resolveUserInfo(userInfo)
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true,
+      })
+    },
     updataMotoData(){  
       let count = 0
       let shouldStop = false
@@ -39,14 +50,38 @@ Component({
       // 一层一层的栈
       wx.navigateTo({
         url: '../logs/logs',
+        
       })
     },
     onLoad() {
       try {
-      //  this.updataMotoData()
+        //this.updataMotoData()
       } catch (error) {
-        
       }
+      app.globalData.userInfo?.then(userInfo => {
+        this.setData({
+               userInfo,
+               hasUserInfo: true,
+            })
+      })
+      // if(app.globalData.userInfo){
+      //   // 优先于加载完成 app.ts(onLaunch)
+      //   this.setData({
+      //     userInfo: app.globalData.userInfo,
+      //     hasUserInfo: true,
+      //   })
+      // }else{
+      //   // 滞后于加载 app.ts(onLaunch)
+      //   wx.getUserInfo({
+      //     success: res => {
+      //       app.globalData.userInfo = res.userInfo
+      //       this.setData({
+      //         userInfo: app.globalData.userInfo,
+      //         hasUserInfo: true,
+      //       })
+      //     }  
+      //   })
+      // }
     
     },
     onChooseAvatar(e: any) {
