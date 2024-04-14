@@ -42,8 +42,12 @@ Component({
       })
     },
     onLoad() {
-      console.log("123")
-      this.updataMotoData()
+      try {
+      //  this.updataMotoData()
+      } catch (error) {
+        
+      }
+    
     },
     onChooseAvatar(e: any) {
       const { avatarUrl } = e.detail
