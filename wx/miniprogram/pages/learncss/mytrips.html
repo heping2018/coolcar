@@ -3,7 +3,12 @@
     <div>css</div>
 </div>
 
-<div>
+<div style="display: flex;
+flex-direction: column;
+align-items: center;
+height: 500px;
+border: 2px solid;
+justify-content: space-evenly;">
     <div class="item bule">
         <div class="tian">中关村到天安门</div>
         <div>价格：120</div>
@@ -11,6 +16,7 @@
     <div  class="item red">
         <div>陆家嘴到迪士尼</div>
         <div>价格：100</div>
+        <div class="star" style="background-color: green; width: 20px;height: 20px; left: 99.3%; bottom: 105px;position: relative;" ></div>
     </div>
     <div  class="item green">
         <div>天河体育中心到广州塔</div>
@@ -35,4 +41,8 @@
     .item .tian{
         color: blue;
     }
+    .item {
+        border: 2px solid;
+    }
+  
 </style>
