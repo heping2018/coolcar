@@ -30,7 +30,11 @@ export  function getSetting(): Promise<WechatMiniprogram.GetSettingSuccessCallba
 export function getUserInfo(): Promise<WechatMiniprogram.GetUserInfoSuccessCallbackResult>{
   return new Promise((resolve,reject) => {
     wx.getUserInfo({
-      success : res => resolve(res),
+      desc: "test",
+      success : res => {
+        console.log(res)
+        resolve(res)
+      },
       fail: err => reject(err),
     })
   })

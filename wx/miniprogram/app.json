@@ -3,6 +3,11 @@
     "pages/index/index",
     "pages/learncss/learncss"
   ],
+  "permmision": {
+    "scope.userLocation": {
+      "desc": "你的位置将显示在"
+    }
+  },
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "租车",

@@ -25,7 +25,7 @@ Page({
       latitude: 31,
       longitude: 120,
     },
-    scale: 10,
+    scale: 16,
     makers: [
       {
         iconPath: "/resources/car.png",
@@ -44,6 +44,25 @@ Page({
         height: 50
       }
     ]
+  },
+  onMyLocationTap(){
+    wx.getLocation({
+      type: 'gcj02',
+      success: res => {
+        this.setData({
+            location: {
+              latitude: res.latitude,
+              longitude: res.longitude,
+            }
+        })
+      },
+      fail: ()=>{
+        wx.showToast({
+          icon: 'none',
+          title: "请前往设置页授权就啊哈哈"
+        })
+      }
+    })
   },
 
   /**
