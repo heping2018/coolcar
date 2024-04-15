@@ -4,7 +4,8 @@
     <block wx:else>
     <text>123</text>
     </block>
-    <view wx:for="{{values}}" wx:for-item="val" wx:key="age">
-        value is {{val.name}}
+    <view class="item cu-avatar xl radio" wx:for="{{values}}" wx:for-item="val" wx:key="age">
+        <text>value is {{val.name}}</text>
+        <text class=" cu-tag badge" >99+</text>
     </view>
 </view>

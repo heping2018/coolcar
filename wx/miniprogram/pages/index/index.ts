@@ -1,117 +1,104 @@
-// index.ts
+// pages/index/index.ts
+Page({
 
-
-// 获取应用实例
-const app = getApp<IAppOption>()
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-
-Component({
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: 'Hello World from',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
+    setting: {
+      skew: 0,
+      rotate: 0,
+      showLocation: true,
+      showScale: true,
+      subKey: '',
+      layerStyle: -1,
+      enableZoom: true,
+      enableScroll: true,
+      enableRotate: false,
+      showCompass: false,
+      enable3D: false,
+      enableOverlooking: false,
+      enableSatellite: false,
+      enableTraffic: false,
     },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
-  },
-  methods: {
-    getUserInfo(e: any){
-      console.log(e)
-      const userInfo: WechatMiniprogram.UserInfo = e.detail.userInfo
-      app.resolveUserInfo(userInfo)
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true,
-      })
+    location: {
+      latitude: 31,
+      longitude: 120,
     },
-    updataMotoData(){  
-      let count = 0
-      let shouldStop = false
-      setTimeout(() => {
-        shouldStop = true
-      }, 10000);
-     const update = ()=> {
-      count ++
-      if(!shouldStop){
-      this.setData({
-        motto: "updateMoto data:" + count,
-        },
-        () => {
-          update()
-        }
-      )}
-    }
-    update()
-  },
-    // 事件处理函数
-    bindViewTap() {
-      // 一层一层的栈
-      wx.navigateTo({
-        url: '../logs/logs',
-        
-      })
-    },
-    onLoad() {
-      try {
-        //this.updataMotoData()
-      } catch (error) {
+    scale: 10,
+    makers: [
+      {
+        iconPath: "/resources/car.png",
+        id: 0,
+        latitude: 23.099994,
+        longitude: 113.324520,
+        width: 50,
+        height: 50
+      },
+      {
+        iconPath: "/resources/car.png",
+        id: 1,
+        latitude: 23.099994,
+        longitude: 113.324520,
+        width: 50,
+        height: 50
       }
-      app.globalData.userInfo?.then(userInfo => {
-        this.setData({
-               userInfo,
-               hasUserInfo: true,
-            })
-      })
-      // if(app.globalData.userInfo){
-      //   // 优先于加载完成 app.ts(onLaunch)
-      //   this.setData({
-      //     userInfo: app.globalData.userInfo,
-      //     hasUserInfo: true,
-      //   })
-      // }else{
-      //   // 滞后于加载 app.ts(onLaunch)
-      //   wx.getUserInfo({
-      //     success: res => {
-      //       app.globalData.userInfo = res.userInfo
-      //       this.setData({
-      //         userInfo: app.globalData.userInfo,
-      //         hasUserInfo: true,
-      //       })
-      //     }  
-      //   })
-      // }
-    
-    },
-    onChooseAvatar(e: any) {
-      const { avatarUrl } = e.detail
-      const { nickName } = this.data.userInfo
-      this.setData({
-        "userInfo.avatarUrl": avatarUrl,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-      })
-    },
-    onInputChange(e: any) {
-      const nickName = e.detail.value
-      const { avatarUrl } = this.data.userInfo
-      this.setData({
-        "userInfo.nickName": nickName,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-      })
-    },
-    getUserProfile() {
-      // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-      wx.getUserProfile({
-        desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-        success: (res) => {
-          console.log(res)
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    },
+    ]
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
 })

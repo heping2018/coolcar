@@ -1,12 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/learncss/learncss"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "租车",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "style": "v2",
