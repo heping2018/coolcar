@@ -32,7 +32,6 @@ export function getUserInfo(): Promise<WechatMiniprogram.GetUserInfoSuccessCallb
     wx.getUserInfo({
       desc: "test",
       success : res => {
-        console.log(res)
         resolve(res)
       },
       fail: err => reject(err),

@@ -1,18 +1,46 @@
 // pages/lock/lock.ts
+import {getUserInfo, getSetting} from "../../utils/util"
+
+const shareLocalkey = "share_location"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    avatarURL: '',
+    shareLocal: false
   },
-
+  onShareLocation(e: any){
+    const shareLocation: boolean =e.detail.value
+    wx.setStorageSync(shareLocalkey,shareLocation)
+  },
+  onGetAvatar(e: any){
+    getSetting().then(res => {
+      if(res.authSetting['scope.userInfo']){
+        return getUserInfo()
+      }
+      return undefined
+    }).then(res => {
+      if(!res){
+        return
+      }
+      const userInfo: WechatMiniprogram.UserInfo = res.userInfo
+      userInfo.avatarUrl = e.detail.avatarUrl
+      this.setData({
+        avatarURL: userInfo.avatarUrl
+      })
+      getApp<IAppOption>().resolveUserInfo(userInfo)
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-
+  async onLoad() {
+    this.setData({
+      shareLocal:  wx.getStorageSync(shareLocalkey) || false
+    })
   },
 
   /**

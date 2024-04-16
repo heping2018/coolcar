@@ -1,7 +1,23 @@
-.lic-tmpl {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+page {
+    height: 100%;
+    width: 100%;
+  }
+.contatiner{
+    height: 100%;
+    padding-top: 100rpx;
+    padding-bottom: 100rpx;
+    text-align: center;
 }
+.static {
+    text-align: center;
+    height: 90%;
+}
+.margin-top{
+  height: 30%;
+}
+.sedan {
+    width: 600rpx;
+    height: 360rpx;
+}
+
 

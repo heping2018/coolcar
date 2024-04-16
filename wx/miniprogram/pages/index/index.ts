@@ -7,7 +7,7 @@ Page({
    */
   data: {
     isPageShowing: true,
-
+    avatarURL: '',
     setting: {
       skew: 0,
       rotate: 0,
@@ -112,8 +112,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-
+   onLoad() {
+    if(getApp<IAppOption>().globalData.userInfo){
+      getApp<IAppOption>().globalData.userInfo.then(res => {
+        this.setData({
+          avatarURL: res.avatarUrl
+        })
+    })
+   }
   },
 
   /**

@@ -1,8 +1,25 @@
-<view>
-   <view class="lic-tmpl">
-        <image class="lic-tmpl-image" src="/resources/sedan.png"/> 
-   </view>
-   <button class="lic-tmpl cu-btn bg-grey lg " style="width: 85%">
-        立即开锁
+<view class="contatiner">
+     <view class="static">
+          <image class="sedan" src="/resources/sedan.png"/> 
+          <view class="margin-top">
+               <view>驾驶安全是用户的责任</view>
+               <view>请将车辆停放在停车位内</view>
+          </view>
+          <view>
+               <!-- open-type="getUserInfo" 只能获取匿名用户 -->
+          <button wx:if="{{!avatarURL}}"  class="cu-avatar round lg bg-grey margin-xs" open-type="chooseAvatar" bindchooseavatar="onGetAvatar">
+               <text class="cuIcon-people"></text>
+          </button>
+          <view wx:if="{{avatarURL}}">
+               <image  src="{{avatarURL}}"  class="cu-avatar round lg bg-grey margin-xs"/>
+               <switch  bindchange="onShareLocation" checked="{{shareLocal}}"/>
+          </view>
+          
+          <view>实时展示我的头像</view>
+     </view>
+     </view>
+    
+     <button class="bg-grey lg " style="width: 80%" aria-disabled="false">
+          立即开锁
      </button>
 </view>
