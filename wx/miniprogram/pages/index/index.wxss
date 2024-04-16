@@ -23,3 +23,14 @@ page {
   height: 60rpx;
   margin-bottom: 10rpx;
 }
+.btn-container{
+    width: 600rpx;
+    margin-left: 75rpx;
+    bottom: 7%;
+    position: absolute;
+    height: 70rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .8;
+}

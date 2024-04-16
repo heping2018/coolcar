@@ -3,12 +3,27 @@
   "projectname": "coolcar",
   "setting": {
     "compileHotReLoad": true,
-    "lazyloadPlaceholderEnable": false
+    "lazyloadPlaceholderEnable": false,
+    "bigPackageSizeSupport": true
   },
   "libVersion": "development",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "pages/lock/lock",
+          "pathName": "pages/lock/lock",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "register",
+          "pathName": "pages/register/register",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "pages/learncss/learncss",
           "pathName": "pages/learncss/learncss",

@@ -1,0 +1,8 @@
+<view>
+   <view class="lic-tmpl">
+        <image class="lic-tmpl-image" src="/resources/sedan.png"/> 
+   </view>
+   <button class="lic-tmpl cu-btn bg-grey lg " style="width: 85%">
+        立即开锁
+     </button>
+</view>

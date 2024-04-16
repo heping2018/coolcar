@@ -1,10 +1,13 @@
 // pages/index/index.ts
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isPageShowing: true,
+
     setting: {
       skew: 0,
       rotate: 0,
@@ -26,24 +29,37 @@ Page({
       longitude: 120,
     },
     scale: 16,
-    makers: [
+    markers: [
       {
         iconPath: "/resources/car.png",
         id: 0,
-        latitude: 23.099994,
-        longitude: 113.324520,
-        width: 50,
-        height: 50
+        latitude: 30.30173583984375,
+        longitude: 120.15481580946181,
+        width: 30,
+        height: 30
       },
       {
         iconPath: "/resources/car.png",
         id: 1,
-        latitude: 23.099994,
-        longitude: 113.324520,
-        width: 50,
-        height: 50
-      }
+        latitude: 31.30173583984375,
+        longitude: 121.15481580946181,
+        width: 30,
+        height: 30
+      },
+  
     ]
+  },
+  onScanCliked(){
+    wx.scanCode({
+      success: () => {
+        wx.navigateTo({
+          url: '/pages/register/register',
+        })
+      },
+      fail : () => {
+        console.log(1)
+      }
+    })
   },
   onMyLocationTap(){
     wx.getLocation({
@@ -59,12 +75,40 @@ Page({
       fail: ()=>{
         wx.showToast({
           icon: 'none',
-          title: "请前往设置页授权就啊哈哈"
+          title: "请前往设置页授权"
         })
       }
     })
   },
 
+  movesCars(){
+    const map = wx.createMapContext("map")
+    const dets = {
+      latitude: 31.30173583984375,
+      longitude: 121.15481580946181,
+    }
+    const moveCar = () => {
+      dets.latitude += 0.1
+      dets.longitude += 0.1
+      map.translateMarker({
+        destination: {
+          latitude : dets.latitude,
+          longitude: dets.longitude,
+        },
+        markerId: 0,
+        autoRotate: false,
+        rotate: 0,
+        duration: 5000,
+        animationEnd: () => {
+          if(this.isPageShowing){
+            moveCar()
+          }
+        }
+      })
+    }
+    moveCar()
+    
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -83,14 +127,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setData({
+      isPageShowing: true
+    }) 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.setData({
+      isPageShowing: false
+    }) 
   },
 
   /**

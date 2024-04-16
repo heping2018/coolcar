@@ -1,13 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/learncss/learncss"
+    "pages/learncss/learncss",
+    "pages/register/register",
+    "pages/lock/lock"
   ],
-  "permmision": {
-    "scope.userLocation": {
-      "desc": "你的位置将显示在"
-    }
-  },
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "租车",
