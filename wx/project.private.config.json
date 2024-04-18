@@ -4,7 +4,8 @@
   "setting": {
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "bigPackageSizeSupport": true
+    "bigPackageSizeSupport": true,
+    "urlCheck": false
   },
   "libVersion": "development",
   "condition": {
