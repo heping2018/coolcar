@@ -4,10 +4,11 @@ import (
 	trippb "coolcar/proto/gen/go"
 	"encoding/json"
 	"fmt"
+
 	"google.golang.org/protobuf/proto"
 )
 
-func main() {
+func main1() {
 	trip := trippb.Trip{
 		Start:       "abc",
 		End:         "def",

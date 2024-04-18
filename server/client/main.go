@@ -1,0 +1,23 @@
+package main
+
+import (
+	"context"
+	trippb "coolcar/proto/gen/go"
+	"log"
+
+	"google.golang.org/grpc"
+)
+
+func main() {
+	con, err := grpc.Dial("127.0.0.1:8081",grpc.WithInsecure())
+	if err != nil {
+		log.Fatal(err)
+	}
+	tripClient := trippb.NewTripServiceClient(con)
+	rep, err := tripClient.GetTrip(context.Background(), &trippb.GetTripRequest{Id: "trip456"})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Print(rep.GetId())
+
+}

@@ -1,10 +1,13 @@
+import { routing } from "../../utils/routing"
+
 // pages/register/register.ts
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
+    redirectUrl: '',
     licImgURL: '',
     licNo:'',
     name: '',
@@ -33,9 +36,13 @@ Page({
     this.setData({
       state:  'VERIFIED'
     })
-    wx.redirectTo({
-      url: '/pages/lock/lock'
-    })
+    console.log(this.redirectUrl)
+    if(this.redirectUrl){
+      wx.redirectTo({
+        url: this.redirectUrl,
+      })
+    }
+   
 
   },
 
@@ -72,8 +79,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-
+  onLoad(opt: Record<"redirect",string>) {
+    const o: routing.registerOpts = opt
+    if(o.redirect){
+      this.redirectUrl = decodeURIComponent(o.redirect)
+    }
   },
 
   /**

@@ -19,7 +19,7 @@
      </view>
      </view>
     
-     <button class="bg-grey lg " style="width: 80%" aria-disabled="false">
+     <button class="bg-grey lg " style="width: 80%" aria-disabled="false" bindtap="onUnlockTap">
           立即开锁
      </button>
 </view>

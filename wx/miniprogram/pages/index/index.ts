@@ -1,5 +1,7 @@
 // pages/index/index.ts
 
+import { routing } from "../../utils/routing"
+
 Page({
 
   /**
@@ -49,11 +51,25 @@ Page({
   
     ]
   },
+  onMytripsTap(){
+    wx.navigateTo({
+      url: '/pages/mytrips/mytrips'
+    })
+  },
   onScanCliked(){
     wx.scanCode({
       success: () => {
+        
+        const carId = "car123"
+        //const redirectUrl = `/pages/lock/lock?car_id=${carId}`
+        const redirectUrl = routing.lock({
+          car_id: carId
+        })
         wx.navigateTo({
-          url: '/pages/register/register',
+          //url: `/pages/register/register?redirect=${encodeURIComponent(redirectUrl)}`,
+          url: routing.register({
+            redirectUrl: redirectUrl,
+          })
         })
       },
       fail : () => {
@@ -100,7 +116,7 @@ Page({
         rotate: 0,
         duration: 5000,
         animationEnd: () => {
-          if(this.isPageShowing){
+          if(this.isPageShowing === true){
             moveCar()
           }
         }
