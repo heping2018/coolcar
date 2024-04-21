@@ -1,10 +1,13 @@
 package main
 
 import (
+	"context"
 	trippb "coolcar/proto/gen/go"
-	trip "coolcar/tripservice"
+	trippb2 "coolcar/temp/proto/gen/go"
+	"coolcar/temp/tripservice"
 	"log"
 	"net"
+	"net/http"
 
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -16,10 +19,10 @@ func main() {
 		log.Fatalf("fail to %v", err)
 	}
 	s := grpc.NewServer()
-	trippb.RegisterTripServiceServer(s, &trip.Service{})
+	trippb2.RegisterTripServiceServer(s, &trip.Service{})
 	log.Fatal(s.Serve(lis))
 }
-<<<<<<< HEAD
+
 func startGRPCGateway() {
 	c := context.Background()
 	c, cancel := context.WithCancel(c)
@@ -37,5 +40,3 @@ func startGRPCGateway() {
 		log.Fatalf("http to %v", err)
 	}
 }
-=======
->>>>>>> parent of 2e91dab (step-3)
