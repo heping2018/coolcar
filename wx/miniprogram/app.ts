@@ -10,23 +10,15 @@ App<IAppOption>({
     })
   },
   onLaunch() {
-    wx.request({
-        url: 'http://localhost:8080/trip/trip123',
-        method: 'GET',
-        success: (res)=>{
-            console.log("12312321"+res)
-        },
-        fail: () => console.log("111")
-       
-      })
     //登录
     wx.login({
       success: res => {
-        console.log('1231234'+res.code)
+        console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       },
     })
     getSetting().then(res => {
+      console.log(res)
       if(res.authSetting['scope.userInfo']){
         return getUserInfo()
       }

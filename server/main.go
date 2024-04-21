@@ -1,19 +1,16 @@
 package main
 
 import (
-	"context"
 	trippb "coolcar/proto/gen/go"
 	trip "coolcar/tripservice"
 	"log"
 	"net"
-	"net/http"
 
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 func main() {
-	go startGRPCGateway()
 	lis, err := net.Listen("tcp", ":8081")
 	if err != nil {
 		log.Fatalf("fail to %v", err)
@@ -22,10 +19,14 @@ func main() {
 	trippb.RegisterTripServiceServer(s, &trip.Service{})
 	log.Fatal(s.Serve(lis))
 }
+<<<<<<< HEAD
 func startGRPCGateway() {
 	c := context.Background()
 	c, cancel := context.WithCancel(c)
-	mux := runtime.NewServeMux()
+	mux := runtime.NewServeMux(runtime.WithMarshalerOption(runtime.MIMEWildcard, &runtime.JSONPb{
+		UnmarshalOptions: protojson.UnmarshalOptions{},
+		MarshalOptions:   protojson.MarshalOptions{UseEnumNumbers: true},
+	}))
 	defer cancel()
 	err := trippb.RegisterTripServiceHandlerFromEndpoint(c, mux, ":8081", []grpc.DialOption{grpc.WithInsecure()})
 	if err != nil {
@@ -36,3 +37,5 @@ func startGRPCGateway() {
 		log.Fatalf("http to %v", err)
 	}
 }
+=======
+>>>>>>> parent of 2e91dab (step-3)

@@ -19,8 +19,8 @@ message Trip {
   Location end_pos = 6;
   repeated  Location path_locations = 7;
   string end = 2;
-  int32 duration_sec = 3;
-  int32 fee_cent = 4;
+  int64 duration_sec = 3;
+  int64 fee_cent = 4;
   TripStatus status = 8;
 }
 
@@ -34,5 +34,5 @@ message GettripResponse {
 }
 
 service TripService{
-  rpc GetTrip(GetTripRequest) returns (GettripResponse);
+  rpc GetTrip (GetTripRequest) returns (GettripResponse);
 }
