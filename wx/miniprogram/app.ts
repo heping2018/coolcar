@@ -16,7 +16,7 @@ App<IAppOption>({
         console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'http://192.168.1.4:8080/v1/auth/login',
+          url: 'http://192.168.2.1:8080/v1/auth/login',
           method: 'POST',
           data:  {
             code: res.code,

@@ -3,11 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+const openIdField = "open_id"
 
 func main() {
 	c := context.Background()
@@ -18,10 +21,10 @@ func main() {
 	col := mc.Database("coolcar").Collection("account")
 	res, err := col.InsertMany(c, []interface{}{
 		bson.M{
-			"open_id": "123",
+			openIdField: "123",
 		},
 		bson.M{
-			"open_id": "456",
+			openIdField: "456",
 		},
 	})
 	if err != nil {
