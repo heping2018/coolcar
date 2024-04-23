@@ -3,6 +3,8 @@ module coolcar
 go 1.21.1
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.19.1
 	github.com/medivhzhan/weapp/v2 v2.5.0
 	go.mongodb.org/mongo-driver v1.15.0
@@ -40,6 +42,7 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240227224415-6ceb2ff114de // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240401170217-c3f982113cda // indirect
+
 )
 
 //require (
