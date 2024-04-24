@@ -1,14 +1,14 @@
 package token
 
 import (
-	"crypto/ecdsa"
+	"crypto/rsa"
 	"fmt"
 
 	"github.com/golang-jwt/jwt"
 )
 
 type JwtVerifier struct {
-	PublicKey *ecdsa.PublicKey
+	PublicKey *rsa.PublicKey
 }
 
 // 验证jwt

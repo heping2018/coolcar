@@ -23,15 +23,30 @@ func main() {
 			MarshalOptions:   protojson.MarshalOptions{UseEnumNumbers: true},
 		},
 	))
-	err := authpb.RegisterAuthServiceHandlerFromEndpoint(c, mux, ":8081", []grpc.DialOption{grpc.WithInsecure()})
-	if err != nil {
-		log.Fatalf("cannot register auth:v=%v", err)
+	serverConfig := []struct {
+		name         string
+		addr         string
+		registerFunc func(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) error
+	}{
+		{
+			name:         "Auth",
+			addr:         ":8081",
+			registerFunc: authpb.RegisterAuthServiceHandlerFromEndpoint,
+		},
+		{
+			name:         "rental",
+			addr:         ":8082",
+			registerFunc: rentalpb.RegisterTripServiceHandlerFromEndpoint,
+		},
 	}
-	err = rentalpb.RegisterTripServiceHandlerFromEndpoint(c, mux, ":8082", []grpc.DialOption{grpc.WithInsecure()})
-	if err != nil {
-		log.Fatalf("cannot register rental:v=%v", err)
+	for _, s := range serverConfig {
+		err := s.registerFunc(c, mux, s.addr, []grpc.DialOption{grpc.WithInsecure()})
+		if err != nil {
+			log.Fatalf("cannot register auth:v=%v", err)
+		}
 	}
-	err = http.ListenAndServe(":8080", mux)
+
+	err := http.ListenAndServe(":8080", mux)
 	if err != nil {
 		log.Fatalf("http to %v", err)
 	}
