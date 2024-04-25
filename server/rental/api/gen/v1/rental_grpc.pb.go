@@ -87,7 +87,7 @@ type TripServiceServer interface {
 	GetTrip(context.Context, *GetTripRequest) (*Trip, error)
 	GetTrips(context.Context, *GetTripsRequest) (*GetTripsResponse, error)
 	UpdateTrip(context.Context, *UpdateTripRequest) (*Trip, error)
-	mustEmbedUnimplementedTripServiceServer()
+
 }
 
 // UnimplementedTripServiceServer must be embedded to have forward compatible implementations.

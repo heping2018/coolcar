@@ -21,6 +21,7 @@ enum TripStatus {
     FINISHED = 2;
 }
 
+## 值模型
 message TripEntity{
     string id = 1;
     Trip trip = 2;
@@ -40,6 +41,7 @@ message CreateTripRequest{
     string car_id = 2;
 }
 
+#领域模型
 message CreateTripResponse{
     TripEntity trip = 1;
 }

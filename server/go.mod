@@ -7,6 +7,7 @@ require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.19.1
 	github.com/medivhzhan/weapp/v2 v2.5.0
+	github.com/toolkits/pkg v1.3.7
 	go.mongodb.org/mongo-driver v1.15.0
 	go.uber.org/zap v1.27.0
 	google.golang.org/grpc v1.63.2

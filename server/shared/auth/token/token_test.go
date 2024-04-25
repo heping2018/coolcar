@@ -9,7 +9,7 @@ import (
 const PublicKey = ""
 
 func TestVerfier(t *testing.T) {
-	pubKey, err := jwt.ParseECPublicKeyFromPEM([]byte(PublicKey))
+	pubKey, err := jwt.ParseRSAPublicKeyFromPEM([]byte(PublicKey))
 	if err != nil {
 		t.Fatalf("cannot parse pubkey")
 	}
